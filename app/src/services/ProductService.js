@@ -3,7 +3,7 @@
  * used for managing request for products and updating the
  * available products on the UI
  *
- * @author Shannon Lal on 2014-11-27.
+ * @author Shannon Lal on 2015-10-19.
  */
 
 var productService = angular.module('productService', []);
@@ -18,6 +18,7 @@ productService.factory( 'ProductService',['$log','$http','$q',
     function( $log, $http, $q) {
         $log.log("Start of Protocol Service");
 
+        var salesDemoConfig = SalesDemo.SalesDemoConfig.getInstance();
         return {
 
             /**
@@ -27,7 +28,8 @@ productService.factory( 'ProductService',['$log','$http','$q',
             getProducts : function(){
                 var def = $q.defer();
 
-                $http.get('SalesTax/rest/products').success(function (data) {
+                var url = salesDemoConfig.getProductsAPIURL();
+                $http.get(url).success(function (data) {
                     def.resolve( data );
                     return data;
 
@@ -54,7 +56,8 @@ productService.factory( 'ProductService',['$log','$http','$q',
             getUnUsedProducts : function( usedProducts){
                 var def = $q.defer();
 
-                $http.get('SalesTax/rest/products').success(function (data) {
+                var url = salesDemoConfig.getProductsAPIURL();
+                $http.get( url ).success(function (data) {
                     var products = data;
                     if( ( typeof usedProducts  === 'undefined') || (usedProducts.length ==0 )){
 

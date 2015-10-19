@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var salesTaxApp = angular.module('salesTax', [
+var salesTaxApp = angular.module('salesdemo', [
   'ngRoute',
   'orderController',
   'productService',
@@ -10,21 +10,23 @@ var salesTaxApp = angular.module('salesTax', [
 ]);
 
 salesTaxApp.config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/viewOrder', {
-        templateUrl: '/SalesTax/viewOrder',
+
+    var salesDemoConfig = SalesDemo.SalesDemoConfig.getInstance();
+    $routeProvider.when('/order', {
+        templateUrl: '/view/viewOrder',
         controller: 'UpdateOrderController'
-    }).when( '/viewProducts',{
-        templateUrl: '/SalesTax/viewProducts',
+    }).when( '/products',{
+        templateUrl: salesDemoConfig.getProductsViewURL(),
         controller: 'ProductsController'
-    }).when( '/viewOrders',{
-        templateUrl: '/SalesTax/viewOrders',
+    }).when( '/orders',{
+        templateUrl: salesDemoConfig.getOrdersViewURL(),
         controller: 'OrdersController'
     }).when('/viewOrder/:orderId', {
         templateUrl: '/SalesTax/viewOrder',
         controller: 'UpdateOrderController'
     })
     .otherwise({
-        redirectTo: '/viewOrder'
+        redirectTo: '/products'
     });
 }]);
 

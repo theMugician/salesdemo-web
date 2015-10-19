@@ -3,7 +3,7 @@
  * used for managing request for order and updating the
  * available products on the UI
  *
- * @author Shannon Lal on 2014-11-27.
+ * @author Shannon Lal on 2015-10-19.
  */
 
 var orderService = angular.module('orderService', []);

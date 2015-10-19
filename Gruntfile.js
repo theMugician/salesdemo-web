@@ -8,24 +8,54 @@ module.exports = function(grunt) {
         },
 
         concat: {
-            salesdemo: {
-                src: ["app/app.js","app/src/controllers/*.js", "app/src/services/*.js"],
-                dest: "build/salesdemo.js"
+            dev: {
+                src: ["app/app.js","app/src/controllers/*.js", "app/src/services/*.js", "app/src/config/dev/*.js"],
+                dest: "build/dev/js/salesdemo-dev.js"
+            },
 
+            prod: {
+                src: ["app/app.js","app/src/controllers/*.js", "app/src/services/*.js", "app/src/config/prod/*.js"],
+                dest: "build/prod/js/salesdemo.js"
             }
-
         },
 
         copy:{
 
             devhtml:{
-                src: 'app/html/dev/base-dev.html',
+                src: 'app/html/index-dev.html',
                 dest:'build/dev/index.html'
             },
             prodhtml:{
-                src: 'app/html/prod/base-prod.html',
-                dest:'build/prod/index.html'
+                src: 'app/html/index.html',
+                dest:'build/prod/index.jsp'
             },
+            orderdevhtml:{
+                src: 'app/html/views/orders.html',
+                dest:'build/dev/views/orders.html'
+            },
+            orderprodhtml:{
+                src: 'app/html/views/orders.html',
+                dest:'build/prod/views/orders.jsp'
+            },
+
+            productsdevhtml:{
+                src: 'app/html/views/products.html',
+                dest:'build/dev/views/products.html'
+            },
+            productsprodhtml:{
+                src: 'app/html/views/products.html',
+                dest:'build/prod/views/products.jsp'
+            },
+
+            updateorderdevhtml:{
+                src: 'app/html/views/updateorder.html',
+                dest:'build/dev/views/updateorder.html'
+            },
+            updateorderprodhtml:{
+                src: 'app/html/views/updateorder.html',
+                dest:'build/prod/views/updateorder.jsp'
+            },
+
             devcss:{
                 files: [
                     {expand:true, cwd: 'app/',flatten: false,src:['css/**'], dest:'build/dev/'}
@@ -45,4 +75,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-git-release');
     grunt.loadNpmTasks('grunt-version');
+
+    grunt.registerTask( 'build', ['clean', 'concat', 'copy']);
 };
