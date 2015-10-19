@@ -21,8 +21,8 @@ salesTaxApp.config(['$routeProvider', function($routeProvider) {
     }).when( '/orders',{
         templateUrl: salesDemoConfig.getOrdersViewURL(),
         controller: 'OrdersController'
-    }).when('/viewOrder/:orderId', {
-        templateUrl: '/SalesTax/viewOrder',
+    }).when('/order/:orderId', {
+        templateUrl: salesDemoConfig.getUpdateOrderViewURL(),
         controller: 'UpdateOrderController'
     })
     .otherwise({

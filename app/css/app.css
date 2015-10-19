@@ -1,12 +1,4 @@
 /* app css stylesheet */
-.masterheader {
-  color: #FFFFFF;
-  background-image:url("/SalesTax/ang/app/img/ar_banner.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 90px;
-  width: auto;
-}
 
 body {
   background:#FFFFFF;

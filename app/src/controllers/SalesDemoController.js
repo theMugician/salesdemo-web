@@ -179,7 +179,7 @@ orderController.controller('OrdersController', ['$scope',  '$location', '$log','
              * @returns {undefined}
              */
             $scope.newOrder = function(){
-                $location.path('/viewOrder');
+                $location.path('/order');
             };
             
              /**

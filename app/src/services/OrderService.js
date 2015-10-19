@@ -17,7 +17,7 @@ var orderService = angular.module('orderService', []);
 orderService.factory( 'OrderService',['$log','$http','$q',
     function( $log, $http, $q) {
         $log.log("Start of Order Service");
-
+        var salesDemoConfig = SalesDemo.SalesDemoConfig.getInstance();
         return {
 
             /**
@@ -28,7 +28,8 @@ orderService.factory( 'OrderService',['$log','$http','$q',
             getOrders : function(){
                 var def = $q.defer();
 
-                $http.get('SalesTax/rest/orders').success(function (data) {
+                var url = salesDemoConfig.getOrdersAPIURL();
+                $http.get(url).success(function (data) {
                     def.resolve( data );
                     return data;
 
@@ -51,7 +52,9 @@ orderService.factory( 'OrderService',['$log','$http','$q',
              */
             getOrder : function(orderId){
                 var def = $q.defer();
-                var url = 'SalesTax/rest/orders/'+orderId;
+                //var url = 'SalesTax/rest/orders/'+orderId;
+
+                var url = salesDemoConfig.getOrderAPIURL( orderId );
                 $http.get(url).success(function (data) {
                     def.resolve( data );
                     return data;
@@ -77,7 +80,8 @@ orderService.factory( 'OrderService',['$log','$http','$q',
             updateOrder : function( order){
                 var def = $q.defer();
 
-                $http.post('SalesTax/rest/orders/update', order).
+                var url = salesDemoConfig.updateOrderAPIURL();
+                $http.post(url, order).
                     success(function(data, status, headers, config) {
                         //Ensure that the status code is ok and data success
                         // response is TRUE

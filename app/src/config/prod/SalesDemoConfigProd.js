@@ -19,17 +19,33 @@ var SalesDemo = SalesDemo || {REVISION: '1.0.0'};
 SalesDemo.SalesDemoConfig = (function() {
 
     function SalesDemoConfig(){
-        /**
-         * The following method returns the url
-         * for getting Device Types
-         * @param deviceClassFamilyName
-         * @method getInstallDeviceTypeURL
-         * @return {string}
-         */
-        this.getInstallDeviceTypeURL = function(deviceClassFamilyName){
-            return '/shopscreen-install-web/test/sample_data/devicetypes.json';
+        this.getProductsAPIURL = function(){
+            return 'api/product/list';
         };
 
+        this.getProductsViewURL = function(){
+            return 'viewproducts';
+        };
+
+        this.getOrdersAPIURL = function(){
+            return 'api/order/list';
+        };
+
+        this.getOrderAPIURL = function(orderId){
+            return 'api/order/'+orderId;
+        };
+
+        this.updateOrderAPIURL = function(){
+            return 'api/order/update';
+        };
+
+        this.getOrdersViewURL = function(){
+            return 'vieworders';
+        };
+
+        this.getUpdateOrderViewURL = function(){
+            return 'vieworder';
+        };
 
     };
 

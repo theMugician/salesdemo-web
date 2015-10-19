@@ -29,8 +29,16 @@ SalesDemo.SalesDemoConfig = (function() {
             return '/salesdemo-web/test/sample_data/list_orders.json';
         };
 
+        this.getUpdateOrderAPIURL = function(){
+            return '/salesdemo-web/test/sample_data/list_orders.json';
+        };
+
         this.getOrdersViewURL = function(){
             return 'views/orders.html';
+        };
+
+        this.getUpdateOrderViewURL = function(){
+            return 'views/updateorder.html';
         };
 
 
