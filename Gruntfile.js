@@ -55,6 +55,16 @@ module.exports = function(grunt) {
                 src: 'app/html/views/updateorder.html',
                 dest:'build/prod/updateorder.jsp'
             },
+            imagesdev :{
+                files: [
+                    {expand:true, cwd: 'app/html/',flatten: false,src:['images/**'], dest:'build/dev/'}
+                ]
+            },
+            imagesprod :{
+                files: [
+                    {expand:true, cwd: 'app/html/',flatten: false,src:['images/**'], dest:'build/prod/'}
+                ]
+            },
 
             devcss:{
                 files: [
